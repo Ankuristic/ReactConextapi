@@ -1,21 +1,22 @@
 import React from "react";
 import styles from "../styles/ItemCard.module.css";
-import {itemContext, useContext} from "../ItemConext"
+import { useContext } from "react";
+import { itemContext } from "../itemContext";
 
 function ItemCard({ name, price }) {
-  const value  = useContext (itemContext);
-  const {seTotal} =useContext(itemContext)
+  const { total, setTotal,item, setItem } = useContext(itemContext);
 
   const handleAdd = () => {
-     setTotal(total+price);
-     setitem(item+1);
-
-
+    setTotal(total + price);
+    setItem(item+1);
   };
 
   const handleRemove = () => {
-
-    setTotal((prevState)=> prevState-price);
+    if (total <= 0) {
+      return;
+    }
+    setTotal((prevState) => prevState - price);
+    setItem(item-1)
   };
 
   return (
