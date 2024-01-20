@@ -10,21 +10,42 @@ const content = {
     "मांजर खिडकीवर आळशीपणे बसली, उबदार सूर्यप्रकाशात बासिंग करत आणि अधूनमधून तिची शेपटी वळवत."
 };
 
-export const Home = () => {
+// export const Home = () => {
   // get language context here
 
-  const {language,pragraph } = useContext(languageContext);
-  console.log(language);
+//   const {language,setlanguage } = useContext(languageContext);
+//   console.log(language);
+
+//   return (
+//     <div>
+//       <div className="language-container">
+//         {/* add eventlister on the span to change the language prefrences  */}
+//         <span onClick=()=>{}>{language.English}</span>
+//         <span>{language.Hindi}</span>
+//         <span>{language.Marathi}</span>
+//       </div>
+//       <p>{/* Show active language content here */}{pragraph} </p>
+//     </div>
+//   );
+// };
+
+
+export const Home = () => {
+  const { language, setLanguage } = useContext(languageContext);
 
   return (
     <div>
       <div className="language-container">
-        {/* add eventlister on the span to change the language prefrences  */}
-        <span>{language.English}</span>
-        <span>{language.Hindi}</span>
-        <span>{language.Marathi}</span>
+        <span onClick={() => setLanguage("English")}>English</span>
+        <span onClick={() => setLanguage("Hindi")}>Hindi</span>
+        <span onClick={() => setLanguage("Marathi")}>Marathi</span>
       </div>
-      <p>{/* Show active language content here */}{pragraph} </p>
+      <p>{content[language]}</p>
     </div>
   );
 };
+
+
+
+
+
